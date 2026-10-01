@@ -1,0 +1,290 @@
+.login {
+    background-color: #DFDFDF;
+    height: 100svh;
+}
+.card-login {
+    width: 80%;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    margin-top: 2%;
+    height: 90%;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+.card-login .login-left {
+    width: 40%;
+        padding : 2rem;
+    background-color: #008BA9;
+    border-radius: 20px;
+}
+.card-login .label-top {
+    font-size: 11px;
+    border: 1px solid white;
+    width: 65%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+.card-login img{
+    margin: 3px 10px 3px 10px;
+}
+.card-login .login-left h1{
+    font-size: 40px;
+    font-weight: 600;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 40px 0 0 0;
+}
+.card-login .login-left p{
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: left;
+    color: white;
+    margin: 20px 0 0 0;
+}
+.card-login .poin-login .inti-poin{
+    display: flex;
+    flex-direction: row;
+    margin-top: 2rem;
+    margin-bottom:2rem;
+}
+.card-login .poin-login .inti-poin h3{
+    font-size: 17px;
+    text-align: left;
+    margin: 0 0 0 10px;
+    color : white;
+}
+.card-login .poin-login .inti-poin p{
+    font-size: 14px;
+    text-align: left;
+    margin-top:0;
+    margin-left: 10px;
+}
+.card-login .poin-login img{
+    margin: 0;
+    width: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    height: 20px;
+    border-radius: 10px;
+}
+.card-login hr{
+    color: white;
+}
+.card-login .logo-login{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 20px;
+}
+.card-login .logo-login img{
+    width: 30px;
+    margin-right: 10px;
+}
+.card-login .logo-login p{
+    font-size: 11px;
+    text-align: left;
+    margin-top:0;
+    color : white;
+}
+.card-login .login-right{
+    width: 50%;
+    padding : 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-login .login-right .form-top h1{
+    font-size: 40px;
+    font-weight: 600;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 40px 0 0 0;
+}
+.login-right .password-bottom{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.login-right .password-bottom .forgot-pass a{
+    font-size: 14px;
+    color: #000000;
+    text-decoration: none;
+}
+
+.card-login .login-right .form-group{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top:10px;
+}
+.login-right .form-group label p{
+    font-size: 17px;
+    color: #05060A;
+}
+.login-right .form-group input{
+    font-size: 14px;
+    color: #05060A;
+    width: 100%;
+    padding: 10px 0 10px 10px;
+    background-color: #F9F9FF;
+    border: 1px solid #64748B;
+    border-radius: 10px;
+    padding-right: 45px;
+    box-sizing: border-box;
+}
+.password-input {
+    position: relative;
+    width: 100%;
+}
+
+.password-input input {
+    width: 100%;
+    padding-right: 45px;
+    box-sizing: border-box;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    border: none;
+    background: transparent;
+    padding: 0;
+
+    cursor: pointer;
+}
+
+.password-toggle img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+.login-right .form-group span{
+    font-size: 14px;
+    color: #05060A;
+    font-weight: 400;
+}
+.card-login .login-right .checkbox-group{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 5px;
+}
+.login-right .checkbox-group label {
+    color: black;
+    font-size: 14px;
+}
+.login-right .button-login button{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    margin-top:20px;
+    border: 1px solid #008BA9;
+    align-items: center;
+    background-color: #008BA9;
+    width: 50%;
+    font-size: 17px;
+    border-radius: 10px;
+}
+.card-login-bottom{
+    margin-top: 20px;
+}
+.card-login-bottom .card-first-login{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #008BA9;
+    background-color: #f9f9ff;
+    border-radius: 10px;
+}
+.card-first-login .text-bottom{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    padding:10px;
+}
+.card-first-login .text-bottom h3{
+    color: #008BA9;
+    font-weight: 400;
+    margin: 0;
+    font-size: 12px;
+}
+.card-first-login .text-bottom p{
+    color: black;
+    font-weight: 400;
+    text-align: left;
+    font-size: 12px;
+    line-height: 1.5;
+}
+.card-second-login {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    border: 1px solid #008BA9;
+    background-color: #f9f9ff;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+.card-login-bottom{
+    margin-top: 4rem;
+}
+.card-second-login .group-login-bottom{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+    width: 90%;
+}
+.group-login-bottom .text-bottom{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    padding: 10px;
+}
+.group-login-bottom .text-bottom h3{
+    color: #008BA9;
+    font-weight: 400;
+    margin: 0;
+    font-size: 14px;
+}
+.group-login-bottom .text-bottom p{
+    color: black;
+    font-weight: 400;
+    text-align: left;
+    font-size: 12px;
+    line-height: 1.5;
+}
+.button-login-bottom button{
+    display: flex;
+    justify-content: end;
+    align-items:center;
+    margin-top: 20px;
+    background-color: white;
+    border: 1px solid #008BA9;
+    color: #008BA9;
+    width: 180px;
+    padding: 10px;
+    border-radius: 5px;
+}
