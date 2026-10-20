@@ -1,0 +1,519 @@
+.sidebar {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 330px;
+    min-width: 330px;
+    height: 100vh;
+    padding: 25px 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    background-color: #ffffff;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 1000;
+    font-size: 12px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+    scrollbar-width: thin;
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 5px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background-color: #d1d5db;
+    border-radius: 10px;
+}
+
+/* =========================================
+   HEADER / LOGO
+   ========================================= */
+
+.sidebar-header {
+    display: flex;
+    align-items: start;
+    padding: 0 8px 25px;
+}
+
+.sidebar-header img {
+    width: 58px;
+    height: 58px;
+    object-fit: contain;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.sidebar-header h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: #111827;
+    text-align: start;
+}
+
+.sidebar-header p {
+    margin: 3px 0 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.2;
+    color: #64748b;
+}
+
+/* =========================================
+   WILAYAH KERJA
+   ========================================= */
+
+.work-area {
+    width: 100%;
+    padding: 16px;
+    box-sizing: border-box;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.work-area h3 {
+    margin: 0 0 6px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    color: #008eaa;
+}
+
+.government {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.35;
+    color: #1e293b;
+}
+
+.location {
+    margin: 4px 0 0;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.3;
+    color: #718096;
+}
+.menu-icon img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+.sidebar-menu .menu-icon img {
+    filter: grayscale(1);
+    opacity: 0.6;
+}
+
+.sidebar-menu.active .menu-icon img {
+    filter: brightness(0) invert(1);
+    opacity: 1;
+}
+/* =========================================
+   NAVIGASI
+   ========================================= */
+
+.sidebar-navigation {
+    flex: 1;
+    width: 100%;
+}
+
+.navigation-title {
+    text-align: left;
+    font-size: 14px;
+    font-weight: 400;
+    color: #888888;
+}
+
+/* =========================================
+   MENU ITEM
+   ========================================= */
+
+.sidebar-menu {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    width: 100%;
+    min-height: 52px;
+    padding: 12px 20px;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+    border-radius: 11px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    color: #a3afc2;
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+/* Icon menu */
+
+/* Hover */
+
+.sidebar-menu:hover {
+    background-color: #f0f9fb;
+    color: #008eaa;
+}
+
+.sidebar-menu:hover .menu-icon {
+    color: #008eaa;
+}
+
+/* Active */
+
+.sidebar-menu.active {
+    background-color: #008eaa;
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+.sidebar-menu.active .menu-icon {
+    color: #ffffff;
+}
+
+/* =========================================
+   PROFILE PAMONG
+   ========================================= */
+
+.sidebar-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    min-height: 68px;
+    padding: 12px;
+    margin-bottom: 28px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Profile icon */
+
+.profile-icon {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #111111;
+    border-radius: 50%;
+    background-color: #e5e5e5;
+    font-size: 22px;
+    color: #111111;
+}
+
+/* Nama */
+
+.profile-name {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #172033;
+}
+
+/* Jabatan */
+
+.profile-role {
+    margin: 3px 0 0;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.3;
+    color: #008eaa;
+}
+
+/* =========================================
+   KONTAK & LOKASI
+   ========================================= */
+
+.sidebar-contact {
+    width: 100%;
+    padding: 16px 18px;
+    box-sizing: border-box;
+    background-color: #008eaa;
+    color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+    font-size: 13px;
+    text-align: left;
+}
+
+/* Judul kontak */
+
+.contact-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+/* Lokasi */
+
+.contact-location {
+    margin: 0 0 3px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.contact-address {
+    margin: 0 0 10px 20px;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+/* Garis */
+
+.sidebar-contact hr {
+    width: 100%;
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.8);
+    margin: 12px 0;
+}
+
+/* Nomor & Email */
+
+.sidebar-contact p {
+    margin-top: 8px;
+    margin-bottom: 0;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+/* =========================================
+   HAMBURGER
+   ========================================= */
+
+.hamburger {
+    display: none;
+    position: fixed;
+    top: 18px;
+    left: 18px;
+    width: 45px;
+    height: 45px;
+    padding: 0;
+    border: none;
+    border-radius: 10px;
+    background-color: #008eaa;
+    cursor: pointer;
+    z-index: 900;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.hamburger:hover {
+    background-color: #007d97;
+}
+
+.hamburger:active {
+    transform: scale(0.95);
+}
+
+/* Garis hamburger */
+
+.hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background-color: #ffffff;
+    border-radius: 2px;
+    transition: 0.2s ease;
+}
+
+/* =========================================
+   OVERLAY MOBILE
+   ========================================= */
+
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.35);
+    z-index: 999;
+}
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 300px;
+        min-width: 300px;
+        padding: 22px 18px;
+    }
+
+    .sidebar-header h1 {
+        font-size: 21px;
+    }
+
+    .sidebar-header p {
+        font-size: 14px;
+    }
+
+    .navigation-title {
+        font-size: 16px;
+    }
+
+    .sidebar-menu {
+        font-size: 17px;
+        gap: 16px;
+    }
+
+    .sidebar-contact {
+        font-size: 12px;
+    }
+}
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 310px;
+        min-width: 0;
+        max-width: 85vw;
+        height: 100vh;
+        padding: 22px 18px;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        box-shadow: 4px 0 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .sidebar.sidebar-open {
+        transform: translateX(0);
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .sidebar-overlay {
+        display: block;
+    }
+
+    .sidebar-header {
+        padding-bottom: 20px;
+    }
+
+    .sidebar-header img {
+        width: 52px;
+        height: 52px;
+    }
+
+    .sidebar-header h1 {
+        font-size: 21px;
+    }
+
+    .sidebar-header p {
+        font-size: 14px;
+    }
+
+    .work-area {
+        margin-bottom: 22px;
+    }
+
+    .navigation-title {
+        margin-bottom: 12px;
+        font-size: 16px;
+    }
+
+    .sidebar-menu {
+        min-height: 54px;
+        padding: 11px 16px;
+        gap: 16px;
+        font-size: 17px;
+    }
+
+    .menu-icon {
+        font-size: 22px;
+    }
+
+    .sidebar-profile {
+        margin-bottom: 20px;
+    }
+
+    .sidebar-contact {
+        margin-bottom: 5px;
+    }
+}
+
+/* =========================================
+   MOBILE KECIL
+   ========================================= */
+
+@media (max-width: 480px) {
+    .sidebar {
+        width: 300px;
+        padding: 20px 16px;
+    }
+
+    .hamburger {
+        top: 15px;
+        left: 15px;
+        width: 42px;
+        height: 42px;
+    }
+
+    .sidebar-header img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .sidebar-header h1 {
+        font-size: 20px;
+    }
+
+    .sidebar-header p {
+        font-size: 13px;
+    }
+
+    .work-area {
+        padding: 14px;
+    }
+
+    .sidebar-menu {
+        min-height: 52px;
+        
+        font-size: 16px;
+    }
+
+    .sidebar-contact {
+        padding: 14px 16px;
+    }
+}
