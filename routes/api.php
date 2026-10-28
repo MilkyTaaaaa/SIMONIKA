@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\JabatanController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\PengaturanSistemController;
+use App\Http\Controllers\Api\PresensiController;
 
 Route::post('/auth/login', [AuthController::class, 'login']);
 
@@ -25,4 +26,8 @@ Route::middleware(['auth:sanctum', 'role:admin'])->group(function () {
 
     Route::get('/pengaturan-sistem', [PengaturanSistemController::class, 'show']);
     Route::put('/pengaturan-sistem', [PengaturanSistemController::class, 'update']);
+});
+
+Route::middleware(['auth:sanctum', 'role:pamong,lurah'])->group(function () {
+    Route::post('/presensi/datang', [PresensiController::class, 'datang']);
 });
