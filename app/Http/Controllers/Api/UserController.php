@@ -42,7 +42,7 @@ class UserController extends Controller{
     public function update(Request $request, User $user){
         $validated = $request->validate([
             'name' => 'sometimes|string',
-            'jabatan_id' => 'nullable|exists:jabatan_id',
+            'jabatan_id' => 'nullable|exists:jabatan,id',
             'padukuhan' => 'nullable|string',
             'pagu_tukin' => 'nullable|integer|min:0',
             'password' => 'sometimes|string|min:6',

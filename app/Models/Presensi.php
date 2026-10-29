@@ -15,6 +15,8 @@ class Presensi extends Model
 
     protected $casts = [
         'date' => 'date:Y-m-d',
+        'latitude' => 'float',
+        'longitude' => 'float',
         'is_in_radius' => 'boolean',
         'is_terlambat' => 'boolean',
         'is_auto_generated' => 'boolean',
