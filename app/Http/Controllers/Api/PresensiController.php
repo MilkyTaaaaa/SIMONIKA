@@ -226,6 +226,7 @@ class PresensiController extends Controller
             ->get()
             ->map(function ($u) use ($presensiHariIni) {
                 $p = $presensiHariIni->get($u->id);
+                $isHadir = $p && in_array($p->type, ['datang', 'tugas_luar'], true);
 
                 return [
                     'user_id' => $u->id,
@@ -238,7 +239,8 @@ class PresensiController extends Controller
                         'izin' => 'Izin',
                         default => 'Belum Presensi',
                     },
-                    'jam_presensi' => ($p && $p->type !== 'izin') ? $p->time : null,
+                    'jam_presensi' => $isHadir ? $p->time : null,
+                    'agenda' => $isHadir ? $p->keterangan : null,
                     'lokasi_kegiatan' => $p?->type === 'tugas_luar' ? $p->keterangan : null,
                 ];
             });
@@ -310,5 +312,85 @@ class PresensiController extends Controller
         }
 
         return Storage::response($presensi->bukti_path, null, ['X-Content-Type-Options' => 'nosniff']);
+    }
+
+    public function rekap(Request $request)
+    {
+        $request->validate([
+            'bulan' => 'sometimes|date_format:Y-m',
+            'user_id' => 'sometimes|integer|exists:users,id',
+        ]);
+
+        $user = $request->user();
+        $bulan = $request->input('bulan', now()->format('Y-m'));
+        $awal = Carbon::parse($bulan . '-01')->startOfMonth();
+        $akhir = $awal->copy()->endOfMonth();
+
+        $hariKerja = 0;
+        for ($d = $awal->copy(); $d->lte($akhir); $d->addDay()) {
+            if ($d->isWeekday()) {
+                $hariKerja++;
+            }
+        }
+
+        $pengaturan = PengaturanSistem::first();
+        $batasIzin = $pengaturan ? $pengaturan->batas_izin_sakit_per_bulan : 5;
+
+        $usersQuery = User::with('jabatan')
+            ->whereIn('role', ['pamong', 'lurah'])
+            ->orderBy('name');
+
+        if ($user->role === 'pamong') {
+            $usersQuery->where('id', $user->id); // Pamong hanya lihat rekap sendiri
+        } elseif ($request->filled('user_id')) {
+            $usersQuery->where('id', $request->user_id); // Lurah & Admin bisa lihat semua / filter
+        }
+
+        $users = $usersQuery->get();
+
+        $presensiBulanIni = Presensi::whereBetween('date', [$awal->toDateString(), $akhir->toDateString()])
+            ->whereIn('user_id', $users->pluck('id'))
+            ->get()
+            ->groupBy('user_id');
+
+        $data = $users->map(function ($u) use ($presensiBulanIni, $hariKerja, $batasIzin) {
+            $records = $presensiBulanIni->get($u->id, collect());
+
+            $hadirKantor = $records->where('type', 'datang')->count();
+            $tugasLuar = $records->where('type', 'tugas_luar')->count();
+            $totalHadir = $hadirKantor + $tugasLuar;
+            $izin = $records->where('type', 'izin')->count();
+            $terlambat = $records->where('is_terlambat', true)->count();
+            $pulangAwal = $records->where('type', 'pulang')->where('is_auto_generated', false)->count();
+
+            $izinDiakui = min($izin, $batasIzin);
+            $hariEfektif = min($hariKerja, $totalHadir + $izinDiakui);
+
+            $persentase = $hariKerja > 0
+                ? (int) round(($hariEfektif / $hariKerja) * 100)
+                : 0;
+
+            return [
+                'user_id' => $u->id,
+                'nama' => $u->name,
+                'role' => $u->role,
+                'jabatan' => $u->jabatan?->nama_lokal,
+                'hari_kerja_efektif' => $hariKerja,
+                'jumlah_hadir' => $totalHadir,
+                'hadir_kantor' => $hadirKantor,
+                'tugas_luar' => $tugasLuar,
+                'izin' => $izin,
+                'izin_melebihi_batas' => max(0, $izin - $batasIzin),
+                'terlambat' => $terlambat,
+                'pulang_awal' => $pulangAwal,
+                'persentase_kehadiran' => $persentase,
+            ];
+        });
+
+        return response()->json([
+            'bulan' => $bulan,
+            'hari_kerja' => $hariKerja,
+            'data' => $data,
+        ]);
     }
 }
