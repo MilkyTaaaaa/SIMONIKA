@@ -125,3 +125,47 @@
     font-weight: 600;
     font-size: 11px;
 }          
+/* Aksi Presensi */
+.card-aksi-presensi{
+    background-color: white;
+    background-color: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 8px 16px 8px 16px;
+    width: auto;
+    height: auto;
+    box-sizing: border-box;
+}
+.card-aksi-presensi .card-aksipresensi-header{
+    text-align: left;
+    margin-bottom: 12px;
+    margin-top: 12px;
+}
+.card-aksi-presensi .card-aksipresensi-header h2{
+    color: black;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.5;
+}
+.card-aksi-presensi .card-aksipresensi-header p{
+    font-size: 14px;
+    margin: 0px;
+    line-height: 1;
+    margin-bottom: 2rem;
+}
+.card-aksi-presensi .card-button2 button{
+    width: 100%;
+    background-color: white;
+    border: 1px solid #e5e7eb;
+    color: rgb(118, 113, 113);
+    padding: 5px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.card-aksi-presensi .card-button2 button:hover{
+    background-color: #008eaa;
+    color: white;
+}

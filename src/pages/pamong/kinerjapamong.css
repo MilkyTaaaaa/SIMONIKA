@@ -1,0 +1,582 @@
+/* Styling for Kinerja Pamong - matching SIMONIKA PNG designs */
+
+.kinerja-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #1e293b;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+/* Header */
+.kinerja-header-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.kinerja-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0 0 6px 0;
+}
+
+.kinerja-subtitle {
+    font-size: 13.5px;
+    color: #64748b;
+    margin: 0;
+}
+
+/* 3 Summary Cards */
+.kinerja-top-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.kinerja-summary-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 22px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.kinerja-summary-label {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: #64748b;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.kinerja-summary-value {
+    font-size: 26px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0;
+}
+
+.progress-bar-small-bg {
+    width: 100%;
+    height: 7px;
+    background-color: #e2e8f0;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.progress-bar-small-fill {
+    height: 100%;
+    background-color: #008eaa;
+    border-radius: 999px;
+}
+
+/* Middle 2 Cards Grid */
+.kinerja-middle-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.kinerja-panel-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 22px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.panel-title-with-icon {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0;
+}
+
+.panel-title-sub {
+    font-size: 12.5px;
+    color: #64748b;
+    margin: -6px 0 0 0;
+}
+
+.presensi-three-boxes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.presensi-sub-box {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 14px;
+    text-align: center;
+}
+
+.presensi-sub-label {
+    font-size: 12px;
+    color: #64748b;
+    margin: 0 0 6px 0;
+}
+
+.presensi-sub-value {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0;
+}
+
+.presensi-sub-value.teal-highlight {
+    color: #008eaa;
+}
+
+.kegiatan-three-stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 10px;
+}
+
+.kegiatan-sub-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.kegiatan-sub-stat-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: #475569;
+    margin: 0;
+}
+
+.kegiatan-sub-stat-sub {
+    font-size: 10px;
+    color: #94a3b8;
+    margin: 0;
+}
+
+.kegiatan-sub-stat-num {
+    font-size: 18px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-top: 4px;
+}
+
+.progress-row-with-badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+/* TUKIN Card Section */
+.tukin-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 24px 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.tukin-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tukin-header-left h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0 0 3px 0;
+}
+
+.tukin-header-left p {
+    font-size: 13px;
+    color: #64748b;
+    margin: 0;
+}
+
+.badge-locked-system {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    color: #475569;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 11.5px;
+    font-weight: 600;
+}
+
+.formula-banner {
+    background-color: #f0f7fb;
+    border: 1px solid #d0e7f5;
+    border-radius: 12px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.sigma-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #008eaa;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.formula-text {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #0f172a;
+    margin: 0;
+}
+
+.tukin-three-columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.tukin-calc-box {
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 18px 20px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.tukin-calc-box.result-box {
+    background-color: #fafbfc;
+}
+
+.tukin-calc-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: #64748b;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.tukin-calc-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0;
+}
+
+.tukin-calc-value.large-result {
+    font-size: 32px;
+    font-weight: 800;
+    color: #0f172a;
+}
+
+.tukin-calc-desc {
+    font-size: 12px;
+    color: #64748b;
+    margin: 0;
+}
+
+.tukin-calc-meta-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #475569;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 8px;
+    margin-top: 4px;
+}
+
+.tukin-calc-formula-note {
+    font-size: 11.5px;
+    color: #64748b;
+    margin: 0;
+}
+
+/* Riwayat Kinerja Table */
+.riwayat-table-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.riwayat-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.year-select-dropdown {
+    padding: 7px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background-color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    color: #334155;
+    cursor: pointer;
+}
+
+.btn-view-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+    background-color: #ffffff;
+    color: #008eaa;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.btn-view-pill:hover {
+    background-color: #f0f9fb;
+    border-color: #008eaa;
+}
+
+/* =========================================
+   MODAL DETAIL KINERJA (Image 6)
+   ========================================= */
+
+.modal-detail-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(15, 23, 42, 0.45);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 16px;
+}
+
+.modal-detail-dialog {
+    background: #ffffff;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 680px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    animation: modalAppear 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    max-height: 90vh;
+}
+
+@keyframes modalAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.96) translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.modal-detail-header {
+    background-color: #008eaa;
+    color: #ffffff;
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.modal-detail-title {
+    font-size: 17px;
+    font-weight: 700;
+    margin: 0 0 4px 0;
+}
+
+.modal-detail-subtitle {
+    font-size: 12.5px;
+    opacity: 0.9;
+    margin: 0;
+}
+
+.modal-detail-close-btn {
+    background: none;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 4px;
+    opacity: 0.85;
+    transition: opacity 0.15s ease;
+}
+
+.modal-detail-close-btn:hover {
+    opacity: 1;
+}
+
+.modal-detail-body {
+    padding: 22px 24px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.modal-section-title {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0 0 8px 0;
+}
+
+.modal-performa-card {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+
+.performa-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.performa-label {
+    font-size: 12px;
+    color: #64748b;
+    margin: 0;
+}
+
+.performa-value {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.badge-sangat-baik {
+    background-color: #dcfce7;
+    border: 1px solid #86efac;
+    color: #166534;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 999px;
+}
+
+.modal-tukin-box {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modal-tukin-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: #334155;
+}
+
+.modal-tukin-divider {
+    border: none;
+    border-top: 1.5px solid #cbd5e1;
+    margin: 4px 0;
+}
+
+.modal-tukin-total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.modal-realisasi-list {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.modal-realisasi-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 13px;
+    color: #334155;
+}
+
+.modal-realisasi-row:last-child {
+    border-bottom: none;
+}
+
+/* Responsiveness */
+@media (max-width: 1024px) {
+    .kinerja-top-grid {
+        grid-template-columns: 1fr;
+    }
+    .kinerja-middle-grid {
+        grid-template-columns: 1fr;
+    }
+    .tukin-three-columns {
+        grid-template-columns: 1fr;
+    }
+}

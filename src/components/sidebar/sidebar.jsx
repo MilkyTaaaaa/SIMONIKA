@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./sidebar.css";
 import logo from "../../assets/login/LOGO UTAMA.png";
 import dashboardicon from "../../assets/dashboard/dashboard.svg";
@@ -10,14 +10,29 @@ import servericon from "../../assets/dashboard/Container.svg";
 import mailicon from "../../assets/dashboard/mail.svg";
 import callicon from "../../assets/dashboard/call.svg";
 import marginicon from "../../assets/dashboard/margin.svg";
-
+import { useAuth } from "../../context/AuthContext";
 
 function Sidebar() {
     const [isOpen, setIsOpen] = useState(false);
+    const location = useLocation();
+    const auth = useAuth();
+    const user = auth?.user;
 
     const closeSidebar = () => {
         setIsOpen(false);
     };
+
+    const isActive = (path) => {
+        const p = location.pathname.toLowerCase();
+        if (path === '/dashboard') return p === '/dashboard' || p === '/dashboardpamong';
+        if (path === '/presensi') return p.startsWith('/presensi');
+        if (path === '/kegiatan') return p.startsWith('/kegiatan');
+        if (path === '/kinerja') return p.startsWith('/kinerja');
+        return p === path;
+    };
+
+    const displayName = user?.name || "Nama Pamong";
+    const displayRole = user?.jabatan || "Jabatan Pamong";
 
     return (
         <>
@@ -78,7 +93,7 @@ function Sidebar() {
 
                     <Link
                         to="/dashboardpamong"
-                        className="sidebar-menu"
+                        className={`sidebar-menu ${isActive('/dashboard') ? 'active' : ''}`}
                         onClick={closeSidebar}
                     >
                         <span className="menu-icon">
@@ -89,7 +104,7 @@ function Sidebar() {
 
                     <Link
                         to="/presensipamong"
-                        className="sidebar-menu"
+                        className={`sidebar-menu ${isActive('/presensi') ? 'active' : ''}`}
                         onClick={closeSidebar}
                     >
                         <span className="menu-icon">
@@ -100,7 +115,7 @@ function Sidebar() {
 
                     <Link
                         to="/kegiatanpamong"
-                        className="sidebar-menu"
+                        className={`sidebar-menu ${isActive('/kegiatan') ? 'active' : ''}`}
                         onClick={closeSidebar}
                     >
                         <span className="menu-icon">
@@ -111,7 +126,7 @@ function Sidebar() {
 
                     <Link
                         to="/kinerjapamong"
-                        className="sidebar-menu"
+                        className={`sidebar-menu ${isActive('/kinerja') ? 'active' : ''}`}
                         onClick={closeSidebar}
                     >
                         <span className="menu-icon">
@@ -124,19 +139,21 @@ function Sidebar() {
                 {/* Profil */}
                 <div className="sidebar-profile">
                     <div className="profile-icon">
-                        ♙
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
                     </div>
 
-                    <div>
-                        <p className="profile-name">
-                            Nama Pamong
+                    <div style={{ flex: 1, minWidth: 0, textAlign: 'left' }}>
+                        <p className="profile-name" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                            {displayName}
                         </p>
-                        <p className="profile-role">
-                            Jabatan Pamong
+                        <p className="profile-role" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                            {displayRole}
                         </p>
                     </div>
                 </div>
-
 
                 {/* Kontak */}
                 <div className="sidebar-contact">

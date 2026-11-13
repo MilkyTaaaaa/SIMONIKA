@@ -1,7 +1,6 @@
-import react from "react";
 import "./card.css";
 
-function CardTwo({ title, image, description, more, button, children }) {
+function CardTwo({ title, description, button, children }) {
     return (
         <div className="card-two">
             <div className="card-two-header">

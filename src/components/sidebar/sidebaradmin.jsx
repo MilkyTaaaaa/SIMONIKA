@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./sidebar.css";
 import logo from "../../assets/login/LOGO UTAMA.png";
 import dashboardicon from "../../assets/dashboard/dashboard.svg";
@@ -12,13 +12,23 @@ import mailicon from "../../assets/dashboard/mail.svg";
 import callicon from "../../assets/dashboard/call.svg";
 import marginicon from "../../assets/dashboard/margin.svg";
 import servericon from "../../assets/dashboard/Container.svg";
+import { useAuth } from "../../context/AuthContext";
 
 function SidebarAdmin() {
     const [isOpen, setIsOpen] = useState(false);
+    const location = useLocation();
+    const { user } = useAuth() || {};
 
     const closeSidebar = () => {
         setIsOpen(false);
     };
+
+    const isActive = (path) => {
+        return location.pathname.toLowerCase().startsWith(path.toLowerCase());
+    };
+
+    const displayName = user?.name || "Admin Presensi";
+    const displayRole = user?.jabatan || "Administrator Sistem";
 
     return (
         <>
@@ -78,24 +88,24 @@ function SidebarAdmin() {
                     </p>
 
                     <Link
-                        to="/dashboardlurah"
-                        className="sidebar-menu"
+                        to="/dashboardadmin"
+                        className={`sidebar-menu ${isActive('/dashboardadmin') ? 'active' : ''}`}
                         onClick={closeSidebar}
                     >
                         <span className="menu-icon"><img src={dashboardicon} alt="Dashboard" /></span>
                         <span>Dashboard</span>
                     </Link>
                     <Link
-                        to="/dashboardlurah"
-                        className="sidebar-menu"
+                        to="/datamasteradmin"
+                        className={`sidebar-menu ${isActive('/datamasteradmin') ? 'active' : ''}`}
                         onClick={closeSidebar}
                     >
                         <span className="menu-icon"><img src={datamastericon} alt="Data Master" /></span>
                         <span>Data Master</span>
                     </Link>
                     <Link
-                        to="/presensilurah"
-                        className="sidebar-menu"
+                        to="/presensiadmin"
+                        className={`sidebar-menu ${isActive('/presensiadmin') ? 'active' : ''}`}
                         onClick={closeSidebar}
                     >
                         <span className="menu-icon"><img src={presensiicon} alt="Presensi" /></span>
@@ -103,8 +113,8 @@ function SidebarAdmin() {
                     </Link>
 
                     <Link
-                        to="/kinerjapamonglurah"
-                        className="sidebar-menu"
+                        to="/kinerjaadmin"
+                        className={`sidebar-menu ${isActive('/kinerjaadmin') ? 'active' : ''}`}
                         onClick={closeSidebar}
                     >
                         <span className="menu-icon"><img src={kinerjaicon} alt="Kinerja" /></span>
@@ -112,16 +122,16 @@ function SidebarAdmin() {
                     </Link>
 
                     <Link
-                        to="/feedback"
-                        className="sidebar-menu"
+                        to="/tukinadmin"
+                        className={`sidebar-menu ${isActive('/tukinadmin') ? 'active' : ''}`}
                         onClick={closeSidebar}
                     >
                         <span className="menu-icon"><img src={tukinicon} alt="TUKIN" /></span>
                         <span>TUKIN</span>
                     </Link>
                     <Link
-                        to="/kinerjalurah"
-                        className="sidebar-menu"
+                        to="/laporanadmin"
+                        className={`sidebar-menu ${isActive('/laporanadmin') ? 'active' : ''}`}
                         onClick={closeSidebar}
                     >
                         <span className="menu-icon"><img src={laporanicon} alt="Laporan" /></span>
@@ -132,15 +142,18 @@ function SidebarAdmin() {
                 {/* Profil */}
                 <div className="sidebar-profile">
                     <div className="profile-icon">
-                        ♙
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
                     </div>
 
-                    <div>
-                        <p className="profile-name">
-                            Nama Pamong
+                    <div style={{ flex: 1, minWidth: 0, textAlign: 'left' }}>
+                        <p className="profile-name" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                            {displayName}
                         </p>
-                        <p className="profile-role">
-                            Jabatan Pamong
+                        <p className="profile-role" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                            {displayRole}
                         </p>
                     </div>
                 </div>

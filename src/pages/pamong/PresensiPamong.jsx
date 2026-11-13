@@ -1,19 +1,16 @@
 import DashboardLayout from "../../components/DashboardLayout";
-import CardWelcome from "../../components/card/CardWelcome";
-import "./dashboardpamong.css";
+import PresensiPamongView from "../../components/presensi/PresensiPamongView";
+import { useAuth } from "../../context/AuthContext";
+import "../../styles/presensi.css";
 
 function PresensiPamong() {
+    const { user } = useAuth() || {};
+    const currentUser = user || { name: "Pamong Hargomulyo", role: "pamong", jabatan: "Kasi Kemakmuran" };
+
     return (
         <DashboardLayout>
-            <div className="presensi-pamong">
-                <CardWelcome 
-                title="Presensi Mandiri Aparatur Kalurahan"
-                description="Kelola kehadiran dan catat aktivitas kedinasan Anda hari ini.Kelola kehadiran dan catat aktivitas kedinasan Anda hari ini."
-                time="12:00"
-                timezone="WIB"
-                date="Jumat, 9 Oktober 2026"
-                
-                />
+            <div className="presensi-integrated-container" style={{ width: "100%", maxWidth: "1480px", margin: "0 auto" }}>
+                <PresensiPamongView user={currentUser} />
             </div>
         </DashboardLayout>
     );

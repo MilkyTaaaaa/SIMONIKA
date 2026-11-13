@@ -22,3 +22,106 @@
     box-sizing: border-box;
     align-items: stretch;
 }
+
+/* Presensi Pamong */
+.aksi-pilihan-presensi{
+    display: flex;
+    background-color: white;
+    box-sizing: border-box;
+    gap: 12px;
+    margin-top: 12px;
+    flex-direction: column;
+    border: 1px solid #e5e7eb;
+    width: auto;
+    height: auto;
+    border-radius: 16px;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-bottom: 24px;
+}
+.aksi-pilihan-presensi .aksi-presensi-judul{
+    text-align: left;
+    justify-content: flex-start;
+    margin: 0;
+}
+.aksi-pilihan-presensi .aksi-presensi-judul h2{
+    color: black;
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+}
+.aksi-pilihan-presensi .aksi-presensi-judul p{
+    font-size: 14px;
+}
+hr{
+    border: none;
+    height: 0.1px;
+    background-color: #cbc9ce;
+}
+.aksi-pilihan-presensi .aksi-presensi-konten{
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+}
+/*  Rekap Kehadiran Presensi*/
+.rekap-kehadiran-pamong{
+    background-color: white;
+    margin-top: 12px;
+    padding: 24px;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    display: flex;
+    align-items: start;
+    text-align: start;
+    padding-top: 0;
+}
+.rekap-kehadiran-pamong h2{
+    color: black;
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+}
+.rekap-kehadiran-pamong p{
+    font-size: 14px;
+}
+.rekap-kehadiran-pamong .rekap-kehadiran-konten{
+    display: flex;
+    width: auto;
+    gap: 12px;
+    box-sizing: border-box;
+    width: 1000px;
+    height: 150px;
+}
+.card-kehadiran-totalhadir{
+    background-color: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+}
+.card-kehadiran-tepatwaktu{
+    background-color: #ECFDF580;
+    border: 1px solid #A7F3D0;
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+
+}
+.card-kehadiran-terlambat{
+    background-color: #FFFBEB80;
+    border: 1px solid #FDE68A;
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+
+}
+.card-kehadiran-tugasluar{
+    background-color: #EFF6FF80;
+    width: 100%;
+    border: 1px solid #BFDBFE;
+    padding: 12px;
+    border-radius: 12px;
+
+}
+
+/*  Rekap Kehadiran Presensi*/
