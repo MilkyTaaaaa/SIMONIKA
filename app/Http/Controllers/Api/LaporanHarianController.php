@@ -123,6 +123,12 @@ class LaporanHarianController extends Controller
             return response()->json(['message' => 'Anda tidak memiliki akses'], 403);
         }
 
+        if ($laporanHarian->date->format('Y-m') < now()->format('Y-m')) {
+            return response()->json([
+                'message' => 'Laporan dari periode bulan yang sudah lewat tidak dapat diubah',
+            ], 422);
+        }
+
         $validated = $request->validate([
             'realisasi_kegiatan' => 'sometimes|required|string|max:2000',
             'is_luar_jam_kerja' => 'sometimes|boolean',
@@ -145,9 +151,14 @@ class LaporanHarianController extends Controller
     {
         $user = $request->user();
 
-        // Hanya pemilik laporan atau admin yang boleh menghapus
         if ($user->role !== 'admin' && $laporanHarian->user_id !== $user->id) {
             return response()->json(['message' => 'Anda tidak memiliki akses'], 403);
+        }
+
+        if ($user->role !== 'admin' && $laporanHarian->date->format('Y-m') < now()->format('Y-m')) {
+            return response()->json([
+                'message' => 'Laporan dari periode bulan yang sudah lewat tidak dapat dihapus',
+            ], 422);
         }
 
         if ($laporanHarian->bukti_path && Storage::exists($laporanHarian->bukti_path)) {

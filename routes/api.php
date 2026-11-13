@@ -18,8 +18,9 @@ Route::post('/auth/login', [AuthController::class, 'login']);
 // Semua user yang sudah login
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/auth/logout', [AuthController::class, 'logout']);
-    Route::get('/me', fn (Request $request) => $request->user());
+    Route::get('/me', fn (Request $request) => $request->user()->load('jabatan:id,kode_standar,nama_lokal,beban_kerja_minimal_bulanan'));
 });
+
 
 // Khusus Admin (DP-02 & DP-03)
 Route::middleware(['auth:sanctum', 'role:admin'])->group(function () {
@@ -55,9 +56,11 @@ Route::middleware(['auth:sanctum', 'role:pamong,lurah'])->group(function () {
     Route::get('/presensi/hari-ini', [PresensiController::class, 'hariIni']);
 
     Route::post('/rencana-bulanan', [RencanaBulananController::class, 'store']);
+    Route::put('/rencana-bulanan', [RencanaBulananController::class, 'update']);
     Route::post('/laporan-harian', [LaporanHarianController::class, 'store']);
     Route::put('/laporan-harian/{laporanHarian}', [LaporanHarianController::class, 'update']);
 });
+
 
 // Pamong, Lurah & Admin
 Route::middleware(['auth:sanctum', 'role:pamong,lurah,admin'])->group(function () {

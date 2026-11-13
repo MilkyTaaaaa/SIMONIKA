@@ -20,7 +20,6 @@ class PresensiController extends Controller
             return response()->json(['message' => 'Pengaturan sistem belum tersedia'], 500);
         }
 
-        // jenis file yang boleh tergantung jenis bukti
         $buktiInput = $request->input('type') === 'tugas_luar' ? $request->input('bukti_type') : 'selfie';
         $mimes = $buktiInput === 'surat_tugas' ? 'jpg,jpeg,png,pdf' : 'jpg,jpeg,png';
         $maxKb = $pengaturan->max_ukuran_file_mb * 1024;
@@ -34,8 +33,24 @@ class PresensiController extends Controller
             'keterangan' => 'nullable|string|max:255',
         ]);
 
-        $user = $request->user(); // user dari token, BUKAN dari input client
+        $user = $request->user();
         $now = now();
+
+        if ($validated['type'] === 'datang' && $now->isWeekend()) {
+            return response()->json([
+                'message' => 'Presensi datang di kantor hanya dapat dilakukan pada hari kerja (Senin-Jumat)',
+            ], 422);
+        }
+
+        $jamPulang = $now->isFriday()
+            ? $pengaturan->jam_pulang_jumat
+            : ($now->isWeekday() ? $pengaturan->jam_pulang_senin_kamis : null);
+
+        if ($validated['type'] === 'datang' && $jamPulang && $now->gt($now->copy()->setTimeFromTimeString($jamPulang))) {
+            return response()->json([
+                'message' => 'Jam kerja hari ini sudah berakhir, tidak dapat melakukan presensi datang',
+            ], 422);
+        }
 
         $sudahAda = Presensi::where('user_id', $user->id)
             ->whereDate('date', $now->toDateString())
@@ -73,7 +88,6 @@ class PresensiController extends Controller
             }
         }
 
-        // simpan file hanya setelah semua validasi lolos; disk default = private
         $path = $request->file('bukti')->store("presensi/{$user->id}");
 
         $presensi = Presensi::create([
@@ -118,6 +132,20 @@ class PresensiController extends Controller
             return response()->json(['message' => 'Izin hanya bisa diajukan untuk hari kerja (Senin-Jumat)'], 422);
         }
 
+        $now = now();
+        $pengaturan = PengaturanSistem::first();
+        if ($tanggal->isSameDay($now) && $pengaturan) {
+            $jamPulang = $now->isFriday()
+                ? $pengaturan->jam_pulang_jumat
+                : $pengaturan->jam_pulang_senin_kamis;
+
+            if ($now->gt($now->copy()->setTimeFromTimeString($jamPulang))) {
+                return response()->json([
+                    'message' => 'Jam kerja hari ini sudah berakhir, tidak dapat mengajukan izin untuk hari ini',
+                ], 422);
+            }
+        }
+
         $user = $request->user();
 
         $sudahAda = Presensi::where('user_id', $user->id)
@@ -132,7 +160,7 @@ class PresensiController extends Controller
         $presensi = Presensi::create([
             'user_id' => $user->id,
             'date' => $tanggal->toDateString(),
-            'time' => now()->format('H:i:s'),
+            'time' => $now->format('H:i:s'),
             'type' => 'izin',
             'keterangan' => $validated['keterangan'],
         ]);

@@ -15,6 +15,12 @@ class RencanaBulananController extends Controller
             'rencana_kegiatan' => 'required|string|max:2000',
         ]);
 
+        if ($validated['bulan'] < now()->format('Y-m')) {
+            return response()->json([
+                'message' => 'Tidak dapat mengisi rencana bulanan untuk bulan yang sudah lewat',
+            ], 422);
+        }
+
         $user = $request->user();
 
         $sudahAda = RencanaBulanan::where('user_id', $user->id)
@@ -44,6 +50,44 @@ class RencanaBulananController extends Controller
         ], 201);
     }
 
+    public function update(Request $request)
+    {
+        $validated = $request->validate([
+            'bulan' => 'required|date_format:Y-m',
+            'rencana_kegiatan' => 'required|string|max:2000',
+        ]);
+
+        if ($validated['bulan'] < now()->format('Y-m')) {
+            return response()->json([
+                'message' => 'Rencana bulanan dari bulan yang sudah lewat tidak dapat diubah',
+            ], 422);
+        }
+
+        $rencana = RencanaBulanan::where('user_id', $request->user()->id)
+            ->where('bulan', $validated['bulan'])
+            ->first();
+
+        if (!$rencana) {
+            return response()->json([
+                'message' => 'Rencana bulanan pada bulan tersebut belum ditemukan',
+            ], 404);
+        }
+
+        $rencana->update([
+            'rencana_kegiatan' => $validated['rencana_kegiatan'],
+        ]);
+
+        return response()->json([
+            'message' => 'Rencana bulanan berhasil diperbarui',
+            'data' => [
+                'id' => $rencana->id,
+                'user_id' => $rencana->user_id,
+                'bulan' => $rencana->bulan,
+                'rencana_kegiatan' => $rencana->rencana_kegiatan,
+            ],
+        ]);
+    }
+
     public function show(Request $request)
     {
         $request->validate([
@@ -54,7 +98,6 @@ class RencanaBulananController extends Controller
         $user = $request->user();
         $bulan = $request->input('bulan', now()->format('Y-m'));
 
-        // Pamong hanya bisa melihat rencananya sendiri; Lurah/Admin bisa filter user_id
         $targetUserId = ($user->role === 'pamong')
             ? $user->id
             : $request->integer('user_id', $user->id);
